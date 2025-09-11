@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - NEXUS STORE</title>
+    <meta name="description" content="Manage your NEXUS STORE account, orders, wishlist, and personal information">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    
+    <!-- External Libraries -->
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="account.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span class="brand-text">NEXUS</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="index.html#categories" class="nav-link">Categories</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products..." id="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-menu" id="user-menu">
+                    <button class="nav-btn user-btn" id="user-btn">
+                        <div class="user-avatar" id="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="btn-text" id="user-name">Account</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="account.html" class="dropdown-item active">
+                            <i class="fas fa-user"></i>
+                            My Account
+                        </a>
+                        <a href="wishlist.html" class="dropdown-item">
+                            <i class="fas fa-heart"></i>
+                            Wishlist
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item logout-btn" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                </div>
+                <button class="nav-btn cart-btn" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="btn-text">Cart</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Account Container -->
+    <div class="account-container">
+        <div class="container">
+            <!-- Account Header -->
+            <div class="account-header" data-aos="fade-up">
+                <div class="user-profile">
+                    <div class="profile-avatar">
+                        <div class="avatar-image" id="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <button class="avatar-edit" id="avatar-edit">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                    <div class="profile-info">
+                        <h1 class="profile-name" id="profile-name">Welcome Back!</h1>
+                        <p class="profile-email" id="profile-email">user@example.com</p>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-orders">0</span>
+                                <span class="stat-label">Orders</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-spent">$0</span>
+                                <span class="stat-label">Total Spent</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="loyalty-points">0</span>
+                                <span class="stat-label">Points</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="account-actions">
+                    <button class="btn btn-outline" id="edit-profile-btn">
+                        <i class="fas fa-edit"></i>
+                        Edit Profile
+                    </button>
+                </div>
+            </div>
+
+            <!-- Account Content -->
+            <div class="account-content">
+                <!-- Sidebar Navigation -->
+                <div class="account-sidebar" data-aos="fade-right">
+                    <nav class="sidebar-nav">
+                        <a href="#overview" class="nav-item active" data-tab="overview">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Overview</span>
+                        </a>
+                        <a href="#orders" class="nav-item" data-tab="orders">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>Orders</span>
+                        </a>
+                        <a href="#wishlist" class="nav-item" data-tab="wishlist">
+                            <i class="fas fa-heart"></i>
+                            <span>Wishlist</span>
+                        </a>
+                        <a href="#addresses" class="nav-item" data-tab="addresses">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Addresses</span>
+                        </a>
+                        <a href="#payment" class="nav-item" data-tab="payment">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Payment Methods</span>
+                        </a>
+                        <a href="#profile" class="nav-item" data-tab="profile">
+                            <i class="fas fa-user-cog"></i>
+                            <span>Profile Settings</span>
+                        </a>
+                        <a href="#security" class="nav-item" data-tab="security">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Security</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="account-main" data-aos="fade-left">
+                    <!-- Overview Tab -->
+                    <div class="tab-content active" id="overview-tab">
+                        <div class="tab-header">
+                            <h2>Account Overview</h2>
+                            <p>Manage your account and track your activity</p>
+                        </div>
+
+                        <div class="overview-grid">
+                            <div class="overview-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Recent Orders</h3>
+                                    <p class="card-number" id="recent-orders-count">0</p>
+                                    <a href="#orders" class="card-link" data-tab="orders">View All Orders</a>
+                                </div>
+                            </div>
+
+                            <div class="overview-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Wishlist Items</h3>
+                                    <p class="card-number" id="wishlist-count">0</p>
+                                    <a href="wishlist.html" class="card-link">View Wishlist</a>
+                                </div>
+                            </div>
+
+                            <div class="overview-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Loyalty Points</h3>
+                                    <p class="card-number" id="points-balance">0</p>
+                                    <a href="#" class="card-link">Redeem Points</a>
+                                </div>
+                            </div>
+
+                            <div class="overview-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Active Shipments</h3>
+                                    <p class="card-number" id="active-shipments">0</p>
+                                    <a href="#orders" class="card-link" data-tab="orders">Track Orders</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-activity">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-list" id="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p>Account created successfully</p>
+                                        <span class="activity-time">Just now</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Tab -->
+                    <div class="tab-content" id="orders-tab">
+                        <div class="tab-header">
+                            <h2>Order History</h2>
+                            <p>Track and manage your orders</p>
+                        </div>
+
+                        <div class="orders-filters">
+                            <div class="filter-group">
+                                <select class="filter-select" id="order-status-filter">
+                                    <option value="">All Orders</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="shipped">Shipped</option>
+                                    <option value="delivered">Delivered</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <select class="filter-select" id="order-time-filter">
+                                    <option value="">All Time</option>
+                                    <option value="30">Last 30 Days</option>
+                                    <option value="90">Last 3 Months</option>
+                                    <option value="365">Last Year</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="orders-list" id="orders-list">
+                            <div class="empty-state">
+                                <i class="fas fa-shopping-bag"></i>
+                                <h3>No Orders Yet</h3>
+                                <p>Start shopping to see your orders here</p>
+                                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Settings Tab -->
+                    <div class="tab-content" id="profile-tab">
+                        <div class="tab-header">
+                            <h2>Profile Settings</h2>
+                            <p>Update your personal information</p>
+                        </div>
+
+                        <form class="profile-form" id="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-firstName" class="form-label">First Name</label>
+                                    <input type="text" id="edit-firstName" name="firstName" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-lastName" class="form-label">Last Name</label>
+                                    <input type="text" id="edit-lastName" name="lastName" class="form-input" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="edit-email" class="form-label">Email Address</label>
+                                <input type="email" id="edit-email" name="email" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="edit-phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="edit-phone" name="phone" class="form-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="edit-birthdate" class="form-label">Date of Birth</label>
+                                <input type="date" id="edit-birthdate" name="birthdate" class="form-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="edit-gender" class="form-label">Gender</label>
+                                <select id="edit-gender" name="gender" class="form-input">
+                                    <option value="">Prefer not to say</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <button type="button" class="btn btn-outline" id="cancel-edit">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Security Tab -->
+                    <div class="tab-content" id="security-tab">
+                        <div class="tab-header">
+                            <h2>Security Settings</h2>
+                            <p>Manage your account security and privacy</p>
+                        </div>
+
+                        <div class="security-section">
+                            <h3>Change Password</h3>
+                            <form class="password-form" id="password-form">
+                                <div class="form-group">
+                                    <label for="current-password" class="form-label">Current Password</label>
+                                    <input type="password" id="current-password" name="currentPassword" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password" class="form-label">New Password</label>
+                                    <input type="password" id="new-password" name="newPassword" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-new-password" class="form-label">Confirm New Password</label>
+                                    <input type="password" id="confirm-new-password" name="confirmPassword" class="form-input" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Password</button>
+                            </form>
+                        </div>
+
+                        <div class="security-section">
+                            <h3>Two-Factor Authentication</h3>
+                            <div class="security-option">
+                                <div class="option-info">
+                                    <h4>SMS Authentication</h4>
+                                    <p>Receive verification codes via SMS</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="sms-2fa">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="security-option">
+                                <div class="option-info">
+                                    <h4>Email Authentication</h4>
+                                    <p>Receive verification codes via email</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="email-2fa">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="security-section">
+                            <h3>Privacy Settings</h3>
+                            <div class="security-option">
+                                <div class="option-info">
+                                    <h4>Marketing Emails</h4>
+                                    <p>Receive promotional emails and offers</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="marketing-emails" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="security-option">
+                                <div class="option-info">
+                                    <h4>Order Updates</h4>
+                                    <p>Receive notifications about your orders</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="order-updates" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" id="cart-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-content" id="cart-content">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cart-footer" style="display: none;">
+            <div class="cart-total">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="total-row">
+                    <span>Shipping:</span>
+                    <span id="cart-shipping">Free</span>
+                </div>
+                <div class="total-row total-final">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <a href="cart.html" class="btn btn-outline">View Cart</a>
+                <a href="checkout.html" class="btn btn-primary">Checkout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
+    <script src="auth.js"></script>
+    <script src="account.js"></script>
+</body>
+</html>

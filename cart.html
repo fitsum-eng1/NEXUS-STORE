@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - NEXUS STORE</title>
+    <meta name="description" content="Review and manage your shopping cart items before checkout">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="cart-page.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span class="brand-text">NEXUS</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="#categories" class="nav-link">Categories</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products..." id="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="nav-btn" id="account-btn">
+                    <i class="fas fa-user"></i>
+                    <span class="btn-text">Account</span>
+                </button>
+                <button class="nav-btn cart-btn active" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="btn-text">Cart</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Page Header -->
+    <section class="cart-header">
+        <div class="container">
+            <div class="header-content" data-aos="fade-up">
+                <h1 class="page-title">SHOPPING CART</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Cart</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Content -->
+    <section class="cart-page-content">
+        <div class="container">
+            <div class="cart-layout">
+                <!-- Cart Items -->
+                <div class="cart-items-section" data-aos="fade-right">
+                    <div class="section-header">
+                        <h2>Your Items</h2>
+                        <div class="cart-actions-header">
+                            <button class="btn btn-outline" id="clear-cart-btn">
+                                <i class="fas fa-trash"></i>
+                                Clear Cart
+                            </button>
+                            <button class="btn btn-secondary" id="save-for-later-btn">
+                                <i class="fas fa-bookmark"></i>
+                                Save for Later
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="cart-items-container" id="cart-items-container">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    
+                    <div class="cart-recommendations" id="cart-recommendations">
+                        <h3>You might also like</h3>
+                        <div class="recommendations-grid" id="recommendations-grid">
+                            <!-- Recommendations will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary-section" data-aos="fade-left">
+                    <div class="summary-card">
+                        <h3>Order Summary</h3>
+                        
+                        <div class="summary-details" id="summary-details">
+                            <!-- Summary will be loaded here -->
+                        </div>
+                        
+                        <div class="promo-code-section">
+                            <h4>Promo Code</h4>
+                            <div class="promo-input-group">
+                                <input type="text" class="promo-input" placeholder="Enter promo code" id="promo-input">
+                                <button class="btn btn-outline" id="apply-promo-btn">Apply</button>
+                            </div>
+                            <div class="promo-suggestions">
+                                <button class="promo-suggestion" data-code="SAVE10">SAVE10 - 10% off</button>
+                                <button class="promo-suggestion" data-code="FREESHIP">FREESHIP - Free shipping</button>
+                            </div>
+                        </div>
+                        
+                        <div class="checkout-actions">
+                            <a href="checkout.html" class="btn btn-primary btn-large" id="checkout-btn">
+                                <i class="fas fa-credit-card"></i>
+                                Proceed to Checkout
+                            </a>
+                            <a href="shop.html" class="btn btn-outline btn-large">
+                                <i class="fas fa-arrow-left"></i>
+                                Continue Shopping
+                            </a>
+                        </div>
+                        
+                        <div class="security-info">
+                            <div class="security-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Secure Checkout</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-truck"></i>
+                                <span>Free Returns</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-headset"></i>
+                                <span>24/7 Support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Viewed -->
+    <section class="recently-viewed" id="recently-viewed">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">RECENTLY VIEWED</h2>
+                <p class="section-subtitle">Items you've looked at recently</p>
+            </div>
+            <div class="products-grid" id="recently-viewed-grid">
+                <!-- Recently viewed products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
+    <script src="cart-page.js"></script>
+</body>
+</html>

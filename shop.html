@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - NEXUS STORE</title>
+    <meta name="description" content="Browse our extensive collection of products with advanced filtering and 3D preview">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span class="brand-text">NEXUS</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="index.html#categories" class="nav-link">Categories</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products..." id="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <a href="account.html">
+                    <button class="nav-btn account-btn" id="account-btn">
+                    <i class="fas fa-user"></i>
+                    <span class="btn-text">Account</span>
+                    </button>
+                </a>
+                <button class="nav-btn cart-btn" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="btn-text">Cart</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shop Header -->
+    <section class="shop-header">
+        <div class="container">
+            <div class="header-content" data-aos="fade-up">
+                <h1 class="page-title">DISCOVER PRODUCTS</h1>
+                <p class="page-subtitle">Explore our vast collection of premium products</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Shop</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Content -->
+    <section class="shop-content">
+        <div class="container">
+            <div class="shop-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar" id="filters-sidebar">
+                    <div class="filters-header">
+                        <h3>FILTERS</h3>
+                        <button class="filters-clear" id="clear-filters">Clear All</button>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4 class="filter-title">Categories</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="electronics">
+                                <span class="checkmark"></span>
+                                <span class="option-text">Electronics</span>
+                                <span class="option-count">(1,234)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="fashion">
+                                <span class="checkmark"></span>
+                                <span class="option-text">Fashion</span>
+                                <span class="option-count">(2,567)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="home">
+                                <span class="checkmark"></span>
+                                <span class="option-text">Home & Living</span>
+                                <span class="option-count">(890)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="sports">
+                                <span class="checkmark"></span>
+                                <span class="option-text">Sports & Fitness</span>
+                                <span class="option-count">(456)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="books">
+                                <span class="checkmark"></span>
+                                <span class="option-text">Books & Media</span>
+                                <span class="option-count">(1,123)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4 class="filter-title">Price Range</h4>
+                        <div class="price-range">
+                            <div class="price-inputs">
+                                <input type="number" class="price-input" placeholder="Min" id="price-min">
+                                <span class="price-separator">-</span>
+                                <input type="number" class="price-input" placeholder="Max" id="price-max">
+                            </div>
+                            <div class="price-slider">
+                                <input type="range" class="range-slider" id="price-range" min="0" max="2000" value="1000">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4 class="filter-title">Brand</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="brand" value="nexus">
+                                <span class="checkmark"></span>
+                                <span class="option-text">Nexus</span>
+                                <span class="option-count">(234)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="brand" value="quantum">
+                                <span class="checkmark"></span>
+                                <span class="option-text">Quantum</span>
+                                <span class="option-count">(156)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="brand" value="neural">
+                                <span class="checkmark"></span>
+                                <span class="option-text">Neural</span>
+                                <span class="option-count">(89)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4 class="filter-title">Rating</h4>
+                        <div class="rating-filters">
+                            <label class="rating-option">
+                                <input type="radio" name="rating" value="5">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-text">5 Stars</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="rating" value="4">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-text">4+ Stars</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="rating" value="3">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-text">3+ Stars</span>
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Products Area -->
+                <main class="products-area">
+                    <div class="products-header">
+                        <div class="results-info">
+                            <span class="results-count" id="results-count">Showing 1-24 of 1,234 products</span>
+                        </div>
+                        <div class="products-controls">
+                            <div class="view-toggle">
+                                <button class="view-btn active" data-view="grid">
+                                    <i class="fas fa-th"></i>
+                                </button>
+                                <button class="view-btn" data-view="list">
+                                    <i class="fas fa-list"></i>
+                                </button>
+                            </div>
+                            <div class="sort-dropdown">
+                                <select class="sort-select" id="sort-select">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="rating">Highest Rated</option>
+                                    <option value="newest">Newest First</option>
+                                </select>
+                            </div>
+                            <button class="filters-toggle" id="filters-toggle">
+                                <i class="fas fa-filter"></i>
+                                <span>Filters</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="products-grid" id="products-grid">
+                        <!-- Products will be dynamically loaded -->
+                    </div>
+                    
+                    <div class="pagination" id="pagination">
+                        <button class="page-btn" id="prev-page" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <div class="page-numbers" id="page-numbers">
+                            <!-- Page numbers will be generated -->
+                        </div>
+                        <button class="page-btn" id="next-page">
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick View Modal -->
+    <div class="modal-overlay" id="quick-view-overlay">
+        <div class="quick-view-modal" id="quick-view-modal">
+            <button class="modal-close" id="quick-view-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content">
+                <div class="product-images">
+                    <div class="main-image">
+                        <img id="quick-view-main-image" src="/placeholder.svg" alt="">
+                    </div>
+                    <div class="image-thumbnails" id="quick-view-thumbnails">
+                        <!-- Thumbnails will be generated -->
+                    </div>
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title" id="quick-view-title"></h2>
+                    <div class="product-rating" id="quick-view-rating">
+                        <!-- Rating stars will be generated -->
+                    </div>
+                    <div class="product-price" id="quick-view-price"></div>
+                    <div class="product-description" id="quick-view-description"></div>
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label>Size:</label>
+                            <div class="size-options" id="quick-view-sizes">
+                                <!-- Size options will be generated -->
+                            </div>
+                        </div>
+                        <div class="option-group">
+                            <label>Color:</label>
+                            <div class="color-options" id="quick-view-colors">
+                                <!-- Color options will be generated -->
+                            </div>
+                        </div>
+                        <div class="option-group">
+                            <label>Quantity:</label>
+                            <div class="quantity-selector">
+                                <button class="qty-btn" data-action="decrease">-</button>
+                                <input type="number" class="qty-input" value="1" min="1">
+                                <button class="qty-btn" data-action="increase">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary add-to-cart-btn" id="quick-view-add-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            Add to Cart
+                        </button>
+                        <button class="btn btn-outline wishlist-btn" id="quick-view-wishlist">
+                            <i class="far fa-heart"></i>
+                            Wishlist
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" id="cart-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-content" id="cart-content">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cart-footer" style="display: none;">
+            <div class="cart-total">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="total-row">
+                    <span>Shipping:</span>
+                    <span id="cart-shipping">Free</span>
+                </div>
+                <div class="total-row total-final">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <a href="cart.html" class="btn btn-outline">View Cart</a>
+                <a href="checkout.html" class="btn btn-primary">Checkout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
+    <script src="shop.js"></script>
+</body>
+</html>

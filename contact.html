@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - NEXUS STORE</title>
+    <meta name="description" content="Get in touch with NEXUS STORE - Customer support, business inquiries, and technical assistance available 24/7">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span class="brand-text">NEXUS</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="index.html#categories" class="nav-link">Categories</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products..." id="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <a href="account.html">
+                    <button class="nav-btn account-btn" id="account-btn">
+                    <i class="fas fa-user"></i>
+                    <span class="btn-text">Account</span>
+                    </button>
+                </a>
+                <button class="nav-btn cart-btn" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="btn-text">Cart</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">GET IN TOUCH</h1>
+                <p class="hero-subtitle">We're here to help you with any questions or concerns</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span>24/7 Support</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-headset"></i>
+                        <span>Live Chat</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Phone Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Methods -->
+    <section class="contact-methods">
+        <div class="container">
+            <div class="methods-grid">
+                <div class="method-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="method-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="method-title">Live Chat</h3>
+                    <p class="method-description">Get instant help from our support team</p>
+                    <div class="method-info">
+                        <span class="status online">Online Now</span>
+                        <span class="response-time">Avg. response: 2 min</span>
+                    </div>
+                    <button class="method-btn" id="start-chat-btn">
+                        <span>Start Chat</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="method-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="method-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="method-title">Phone Support</h3>
+                    <p class="method-description">Speak directly with our experts</p>
+                    <div class="method-info">
+                        <span class="phone-number">+1 (555) 123-4567</span>
+                        <span class="hours">Mon-Fri: 9AM-8PM EST</span>
+                    </div>
+                    <button class="method-btn" onclick="window.open('tel:+15551234567')">
+                        <span>Call Now</span>
+                        <i class="fas fa-phone"></i>
+                    </button>
+                </div>
+
+                <div class="method-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="method-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="method-title">Email Support</h3>
+                    <p class="method-description">Send us a detailed message</p>
+                    <div class="method-info">
+                        <span class="email">support@nexusstore.com</span>
+                        <span class="response-time">Response within 24 hours</span>
+                    </div>
+                    <button class="method-btn" onclick="window.open('mailto:support@nexusstore.com')">
+                        <span>Send Email</span>
+                        <i class="fas fa-envelope"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-content">
+                <!-- Contact Form -->
+                <div class="contact-form-section" data-aos="fade-right">
+                    <div class="form-header">
+                        <h2 class="form-title">Send us a Message</h2>
+                        <p class="form-subtitle">Fill out the form below and we'll get back to you as soon as possible</p>
+                    </div>
+                    
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name *</label>
+                                <input type="text" id="first-name" name="firstName" required>
+                                <span class="form-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name *</label>
+                                <input type="text" id="last-name" name="lastName" required>
+                                <span class="form-error"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                                <span class="form-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                                <span class="form-error"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="order">Order Issue</option>
+                                <option value="return">Return/Refund</option>
+                                <option value="partnership">Business Partnership</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="order-number">Order Number (if applicable)</label>
+                            <input type="text" id="order-number" name="orderNumber" placeholder="e.g., NX-2024-001234">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Please describe your inquiry in detail..." required></textarea>
+                            <span class="form-error"></span>
+                            <div class="character-count">
+                                <span id="char-count">0</span>/1000 characters
+                            </div>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span class="checkmark"></span>
+                                Subscribe to our newsletter for updates and exclusive offers
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loader">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info-section" data-aos="fade-left">
+                    <div class="info-card">
+                        <h3 class="info-title">Contact Information</h3>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Headquarters</h4>
+                                <p>123 Innovation Drive<br>Tech Valley, CA 94025<br>United States</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Phone Numbers</h4>
+                                <p>Support: +1 (555) 123-4567<br>Sales: +1 (555) 123-4568<br>International: +1 (555) 123-4569</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Email Addresses</h4>
+                                <p>General: info@nexusstore.com<br>Support: support@nexusstore.com<br>Business: business@nexusstore.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 8:00 PM EST<br>Saturday: 10:00 AM - 6:00 PM EST<br>Sunday: 12:00 PM - 5:00 PM EST</p>
+                            </div>
+                        </div>
+
+                        <div class="social-section">
+                            <h4>Follow Us</h4>
+                            <div class="social-links">
+                                <a href="#" class="social-link facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-link twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-link linkedin">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-link youtube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-header" data-aos="fade-up">
+                <h2 class="map-title">Find Our Locations</h2>
+                <p class="map-subtitle">Visit our offices and experience centers worldwide</p>
+            </div>
+            
+            <div class="map-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="map-placeholder" id="map-placeholder">
+                    <div class="map-overlay">
+                        <div class="map-info">
+                            <h3>NEXUS Store Headquarters</h3>
+                            <p>123 Innovation Drive, Tech Valley, CA 94025</p>
+                            <button class="map-btn" onclick="window.open('https://maps.google.com/?q=123+Innovation+Drive+Tech+Valley+CA+94025', '_blank')">
+                                <i class="fas fa-directions"></i>
+                                Get Directions
+                            </button>
+                        </div>
+                    </div>
+                    <img src="/placeholder.svg?height=400&width=800" alt="NEXUS Store Location Map" class="map-image">
+                </div>
+                
+                <div class="locations-list">
+                    <div class="location-item">
+                        <div class="location-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="location-info">
+                            <h4>Headquarters</h4>
+                            <p>123 Innovation Drive<br>Tech Valley, CA 94025</p>
+                            <span class="location-type">Main Office</span>
+                        </div>
+                    </div>
+                    
+                    <div class="location-item">
+                        <div class="location-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="location-info">
+                            <h4>Experience Center</h4>
+                            <p>456 Retail Plaza<br>New York, NY 10001</p>
+                            <span class="location-type">Showroom</span>
+                        </div>
+                    </div>
+                    
+                    <div class="location-item">
+                        <div class="location-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <div class="location-info">
+                            <h4>Distribution Center</h4>
+                            <p>789 Logistics Way<br>Chicago, IL 60601</p>
+                            <span class="location-type">Warehouse</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-header" data-aos="fade-up">
+                <h2 class="faq-title">Frequently Asked Questions</h2>
+                <p class="faq-subtitle">Quick answers to common questions</p>
+            </div>
+            
+            <div class="faq-content">
+                <div class="faq-categories" data-aos="fade-right">
+                    <button class="faq-category-btn active" data-category="general">
+                        <i class="fas fa-question-circle"></i>
+                        General
+                    </button>
+                    <button class="faq-category-btn" data-category="orders">
+                        <i class="fas fa-shopping-bag"></i>
+                        Orders
+                    </button>
+                    <button class="faq-category-btn" data-category="shipping">
+                        <i class="fas fa-truck"></i>
+                        Shipping
+                    </button>
+                    <button class="faq-category-btn" data-category="returns">
+                        <i class="fas fa-undo"></i>
+                        Returns
+                    </button>
+                    <button class="faq-category-btn" data-category="account">
+                        <i class="fas fa-user"></i>
+                        Account
+                    </button>
+                </div>
+                
+                <div class="faq-items" data-aos="fade-left">
+                    <div class="faq-category-content active" data-category="general">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>What is NEXUS Store?</h4>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>NEXUS Store is a next-generation e-commerce platform offering cutting-edge products with 3D visualization, AI-powered recommendations, and immersive shopping experiences.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>How do I create an account?</h4>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Click on the "Account" button in the top navigation, then select "Register". Fill out the required information and verify your email address to complete the process.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>Is my personal information secure?</h4>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, we use industry-standard encryption and security measures to protect your personal information. We never share your data with third parties without your consent.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-category-content" data-category="orders">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>How do I place an order?</h4>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Browse our products, add items to your cart, and proceed to checkout. You'll need to provide shipping information and payment details to complete your order.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>Can I modify or cancel my order?</h4>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>You can modify or cancel your order within 1 hour of placing it. After that, please contact our customer support team for assistance.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-category-content" data-category="shipping">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>What are your shipping options?</h4>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We offer standard shipping (5-7 business days), express shipping (2-3 business days), and overnight shipping. Free shipping is available on orders over $50.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>Do you ship internationally?</h4>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, we ship to over 150 countries worldwide. International shipping rates and delivery times vary by destination.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-category-content" data-category="returns">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>What is your return policy?</h4>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We offer a 30-day return policy for most items. Products must be in original condition with all packaging and accessories included.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>How do I initiate a return?</h4>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Log into your account, go to "My Orders", find the item you want to return, and click "Return Item". Follow the instructions to print a return label.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-category-content" data-category="account">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>How do I reset my password?</h4>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Click "Forgot Password" on the login page, enter your email address, and we'll send you a password reset link.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>How do I update my account information?</h4>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Log into your account and go to "Profile Settings" where you can update your personal information, addresses, and preferences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Chat Widget -->
+    <div class="chat-widget" id="chat-widget">
+        <div class="chat-toggle" id="chat-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chat-badge">1</span>
+        </div>
+        
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header">
+                <div class="chat-agent">
+                    <div class="agent-avatar">
+                        <img src="/placeholder.svg?height=40&width=40" alt="Support Agent">
+                        <div class="status-indicator online"></div>
+                    </div>
+                    <div class="agent-info">
+                        <h4>Sarah Johnson</h4>
+                        <span>Customer Support</span>
+                    </div>
+                </div>
+                <button class="chat-close" id="chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="message agent-message">
+                    <div class="message-avatar">
+                        <img src="/placeholder.svg?height=32&width=32" alt="Agent">
+                    </div>
+                    <div class="message-content">
+                        <p>Hi! I'm Sarah from NEXUS Store support. How can I help you today?</p>
+                        <span class="message-time">Just now</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <input type="text" class="chat-input" placeholder="Type your message..." id="chat-input">
+                    <button class="chat-send" id="chat-send">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="chat-quick-actions">
+                    <button class="quick-action" data-message="I need help with my order">Order Help</button>
+                    <button class="quick-action" data-message="I want to return an item">Returns</button>
+                    <button class="quick-action" data-message="I have a technical issue">Tech Support</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="100">
+                    <div class="footer-brand">
+                        <div class="brand-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <span class="brand-text">NEXUS</span>
+                    </div>
+                    <p class="footer-description">
+                        The future of e-commerce is here. Experience next-generation shopping 
+                        with advanced 3D visualization and AI-powered recommendations.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="footer-title">SHOP</h3>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="index.html#categories">Categories</a></li>
+                        <li><a href="index.html#featured">Featured</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="footer-title">SUPPORT</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="footer-title">COMPANY</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" data-aos="fade-up" data-aos-delay="500">
+                <div class="footer-bottom-content">
+                    <p class="copyright">© 2024 NEXUS STORE. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
+    <script src="auth.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

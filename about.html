@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - NEXUS STORE</title>
+    <meta name="description" content="Learn about NEXUS STORE - Your premier destination for cutting-edge technology and innovation">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span class="brand-text">NEXUS</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="index.html#categories" class="nav-link">Categories</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products..." id="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <a href="account.html">
+                    <button class="nav-btn account-btn" id="account-btn">
+                    <i class="fas fa-user"></i>
+                    <span class="btn-text">Account</span>
+                    </button>
+                </a>
+                <button class="nav-btn cart-btn" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="btn-text">Cart</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">ABOUT NEXUS</h1>
+                <p class="hero-subtitle">Pioneering the Future of Technology</p>
+                <div class="hero-description">
+                    <p>We are more than just a store - we're your gateway to tomorrow's technology, today. 
+                    Since our founding, we've been committed to bringing you the most innovative, 
+                    cutting-edge products that shape the future.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="our-story">
+        <div class="container">
+            <div class="story-layout">
+                <div class="story-content" data-aos="fade-right">
+                    <h2 class="section-title">OUR STORY</h2>
+                    <div class="story-text">
+                        <p>Founded in 2020 by a team of technology enthusiasts, NEXUS STORE began as a vision to democratize access to cutting-edge technology. We saw a gap in the market where consumers struggled to find authentic, high-quality tech products with reliable support.</p>
+                        
+                        <p>What started as a small online retailer has grown into a trusted destination for tech enthusiasts, professionals, and everyday users seeking the latest innovations. Our commitment to quality, authenticity, and customer satisfaction has been the cornerstone of our growth.</p>
+                        
+                        <p>Today, we serve thousands of customers worldwide, offering everything from the latest smartphones and laptops to emerging technologies like VR headsets and smart home devices. But our mission remains the same: to bring you the future, today.</p>
+                    </div>
+                </div>
+                <div class="story-visual" data-aos="fade-left">
+                    <div class="visual-card">
+                        <div class="visual-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">50K+</div>
+                                <div class="stat-label">Happy Customers</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">1000+</div>
+                                <div class="stat-label">Products</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">99.9%</div>
+                                <div class="stat-label">Uptime</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="our-values">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">OUR VALUES</h2>
+                <p class="section-subtitle">The principles that guide everything we do</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Trust & Authenticity</h3>
+                    <p>Every product we sell is genuine and comes with full manufacturer warranty. We partner directly with brands to ensure authenticity.</p>
+                </div>
+                
+                <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="value-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Innovation First</h3>
+                    <p>We're always on the lookout for the next big thing in technology, bringing you products that push the boundaries of what's possible.</p>
+                </div>
+                
+                <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Customer Obsession</h3>
+                    <p>Your satisfaction is our priority. From pre-purchase consultation to after-sales support, we're here for you every step of the way.</p>
+                </div>
+                
+                <div class="value-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>We're committed to reducing our environmental impact through eco-friendly packaging and supporting sustainable technology.</p>
+                </div>
+                
+                <div class="value-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>We believe in building a community of tech enthusiasts who share knowledge, experiences, and passion for innovation.</p>
+                </div>
+                
+                <div class="value-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in everything we do, from product curation to customer service and user experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="our-team">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">MEET OUR TEAM</h2>
+                <p class="section-subtitle">The passionate people behind NEXUS STORE</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Sarah Johnson">
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Sarah Johnson</h3>
+                        <p class="member-role">CEO & Founder</p>
+                        <p class="member-bio">Former tech executive with 15+ years in the industry. Passionate about making technology accessible to everyone.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Michael Chen">
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Michael Chen</h3>
+                        <p class="member-role">CTO</p>
+                        <p class="member-bio">Full-stack developer and tech innovator. Leads our technical vision and platform development.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Emily Rodriguez">
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Emily Rodriguez</h3>
+                        <p class="member-role">Head of Customer Experience</p>
+                        <p class="member-bio">Customer service expert dedicated to ensuring every interaction exceeds expectations.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="David Kim">
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>David Kim</h3>
+                        <p class="member-role">Product Manager</p>
+                        <p class="member-bio">Tech enthusiast with an eye for emerging trends. Curates our product selection and partnerships.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section class="achievements">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">OUR ACHIEVEMENTS</h2>
+                <p class="section-subtitle">Milestones that mark our journey</p>
+            </div>
+            
+            <div class="achievements-timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3>Company Founded</h3>
+                        <p>NEXUS STORE was born with a mission to revolutionize tech retail</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h3>10K Customers</h3>
+                        <p>Reached our first major milestone of 10,000 satisfied customers</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3>Best E-commerce Award</h3>
+                        <p>Recognized as "Best Tech E-commerce Platform" by TechReview Magazine</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>Global Expansion</h3>
+                        <p>Expanded shipping to 50+ countries worldwide</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3>50K+ Community</h3>
+                        <p>Built a thriving community of 50,000+ tech enthusiasts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="zoom-in">
+                <h2>Ready to Experience the Future?</h2>
+                <p>Join thousands of satisfied customers who trust NEXUS STORE for their technology needs</p>
+                <div class="cta-actions">
+                    <a href="shop.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-shopping-bag"></i>
+                        Start Shopping
+                    </a>
+                    <a href="index.html#contact" class="btn btn-outline btn-large">
+                        <i class="fas fa-envelope"></i>
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
+    <script src="main.js"></script>
+    <script src="about.js"></script>
+</body>
+</html>

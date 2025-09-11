@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - NEXUS STORE</title>
+    <meta name="description" content="Save and manage your favorite products in your personal wishlist">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="wishlist.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span class="brand-text">NEXUS</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="#categories" class="nav-link">Categories</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products..." id="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="nav-btn" id="account-btn">
+                    <i class="fas fa-user"></i>
+                    <span class="btn-text">Account</span>
+                </button>
+                <button class="nav-btn cart-btn" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="btn-text">Cart</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Wishlist Header -->
+    <section class="wishlist-header">
+        <div class="container">
+            <div class="header-content" data-aos="fade-up">
+                <div class="header-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h1 class="page-title">MY WISHLIST</h1>
+                <p class="page-subtitle">Your saved favorites and dream products</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Wishlist</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishlist Content -->
+    <section class="wishlist-content">
+        <div class="container">
+            <!-- Wishlist Stats -->
+            <div class="wishlist-stats" data-aos="fade-up">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="total-items">0</div>
+                            <div class="stat-label">Saved Items</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="total-value">$0</div>
+                            <div class="stat-label">Total Value</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="on-sale">0</div>
+                            <div class="stat-label">On Sale</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="recently-added">0</div>
+                            <div class="stat-label">This Week</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wishlist Controls -->
+            <div class="wishlist-controls" data-aos="fade-up" data-aos-delay="100">
+                <div class="controls-left">
+                    <div class="view-options">
+                        <button class="view-btn active" data-view="grid" title="Grid View">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list" title="List View">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                    <div class="sort-options">
+                        <select class="sort-select" id="wishlist-sort">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name">Name A-Z</option>
+                            <option value="availability">Available First</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="controls-right">
+                    <button class="btn btn-outline" id="share-wishlist-btn">
+                        <i class="fas fa-share-alt"></i>
+                        Share Wishlist
+                    </button>
+                    <button class="btn btn-secondary" id="add-all-to-cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        Add All to Cart
+                    </button>
+                    <button class="btn btn-outline" id="clear-wishlist-btn">
+                        <i class="fas fa-trash"></i>
+                        Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Wishlist Items -->
+            <div class="wishlist-items" data-aos="fade-up" data-aos-delay="200">
+                <div class="wishlist-grid" id="wishlist-grid">
+                    <!-- Wishlist items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Price Drop Alerts -->
+            <div class="price-alerts-section" data-aos="fade-up" data-aos-delay="300">
+                <div class="alerts-header">
+                    <h3>Price Drop Alerts</h3>
+                    <p>Get notified when your wishlist items go on sale</p>
+                </div>
+                <div class="alerts-content">
+                    <div class="alert-setup">
+                        <div class="alert-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="alert-text">
+                            <h4>Never Miss a Deal</h4>
+                            <p>We'll email you when items in your wishlist drop in price or go on sale</p>
+                        </div>
+                        <button class="btn btn-primary" id="setup-alerts-btn">
+                            Setup Alerts
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Products -->
+    <section class="recommended-section" id="recommended-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">YOU MIGHT ALSO LIKE</h2>
+                <p class="section-subtitle">Based on your wishlist preferences</p>
+            </div>
+            <div class="products-grid" id="recommended-grid">
+                <!-- Recommended products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Modal -->
+    <div class="share-modal-overlay" id="share-modal-overlay">
+        <div class="share-modal" id="share-modal">
+            <div class="modal-header">
+                <h3>Share Your Wishlist</h3>
+                <button class="modal-close" id="share-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="share-options">
+                    <button class="share-option" data-platform="facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </button>
+                    <button class="share-option" data-platform="twitter">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </button>
+                    <button class="share-option" data-platform="pinterest">
+                        <i class="fab fa-pinterest"></i>
+                        <span>Pinterest</span>
+                    </button>
+                    <button class="share-option" data-platform="email">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </button>
+                </div>
+                <div class="share-link">
+                    <label>Share Link:</label>
+                    <div class="link-input-group">
+                        <input type="text" class="link-input" id="share-link-input" readonly>
+                        <button class="btn btn-primary" id="copy-link-btn">
+                            <i class="fas fa-copy"></i>
+                            Copy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
+    <script src="wishlist.js"></script>
+</body>
+</html>

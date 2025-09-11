@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - NEXUS STORE</title>
+    <meta name="description" content="Create your NEXUS STORE account to access exclusive features and personalized shopping experience">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    
+    <!-- External Libraries -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span class="brand-text">NEXUS</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="index.html#categories" class="nav-link">Categories</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products..." id="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="nav-btn cart-btn" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="btn-text">Cart</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Container -->
+    <div class="auth-container">
+        <div class="auth-background">
+            <div class="auth-particles"></div>
+        </div>
+        
+        <div class="auth-content" data-aos="fade-up">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="auth-logo">
+                        <div class="brand-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <span class="brand-text">NEXUS</span>
+                    </div>
+                    <h1 class="auth-title">Create Account</h1>
+                    <p class="auth-subtitle">Join NEXUS and unlock exclusive shopping benefits</p>
+                </div>
+
+                <form class="auth-form" id="register-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label">
+                                <i class="fas fa-user"></i>
+                                First Name
+                            </label>
+                            <input 
+                                type="text" 
+                                id="firstName" 
+                                name="firstName" 
+                                class="form-input" 
+                                placeholder="Enter first name"
+                                required
+                            >
+                            <div class="form-error" id="firstName-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName" class="form-label">
+                                <i class="fas fa-user"></i>
+                                Last Name
+                            </label>
+                            <input 
+                                type="text" 
+                                id="lastName" 
+                                name="lastName" 
+                                class="form-input" 
+                                placeholder="Enter last name"
+                                required
+                            >
+                            <div class="form-error" id="lastName-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope"></i>
+                            Email Address
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="Enter your email"
+                            required
+                        >
+                        <div class="form-error" id="email-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">
+                            <i class="fas fa-phone"></i>
+                            Phone Number (Optional)
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            class="form-input" 
+                            placeholder="Enter phone number"
+                        >
+                        <div class="form-error" id="phone-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <div class="password-input-container">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                class="form-input" 
+                                placeholder="Create a password"
+                                required
+                            >
+                            <button type="button" class="password-toggle" id="password-toggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill"></div>
+                            </div>
+                            <div class="strength-text">Password strength</div>
+                        </div>
+                        <div class="form-error" id="password-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">
+                            <i class="fas fa-lock"></i>
+                            Confirm Password
+                        </label>
+                        <div class="password-input-container">
+                            <input 
+                                type="password" 
+                                id="confirmPassword" 
+                                name="confirmPassword" 
+                                class="form-input" 
+                                placeholder="Confirm your password"
+                                required
+                            >
+                            <button type="button" class="password-toggle" id="confirm-password-toggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-error" id="confirmPassword-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+                        </label>
+                        <div class="form-error" id="terms-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="checkmark"></span>
+                            Subscribe to newsletter for exclusive deals and updates
+                        </label>
+                    </div>
+
+                    <button type="submit" class="auth-btn primary" id="register-btn">
+                        <span class="btn-text">Create Account</span>
+                        <div class="btn-loader">
+                            <div class="loader-ring"></div>
+                        </div>
+                    </button>
+
+                    <div class="auth-divider">
+                        <span>or sign up with</span>
+                    </div>
+
+                    <div class="social-auth">
+                        <button type="button" class="social-btn google-btn" id="google-register">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="social-btn facebook-btn" id="facebook-register">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </button>
+                        <button type="button" class="social-btn apple-btn" id="apple-register">
+                            <i class="fab fa-apple"></i>
+                            <span>Apple</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html" class="auth-link">Sign In</a></p>
+                </div>
+            </div>
+
+            <!-- Features Sidebar -->
+            <div class="auth-features" data-aos="fade-left" data-aos-delay="300">
+                <h3>Join NEXUS Today</h3>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Welcome Bonus</h4>
+                            <p>Get 10% off your first order</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Loyalty Rewards</h4>
+                            <p>Earn points with every purchase</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Price Alerts</h4>
+                            <p>Get notified when items go on sale</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Secure Shopping</h4>
+                            <p>Protected transactions and data</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

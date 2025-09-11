@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS STORE - The Future of Shopping</title>
+    <meta name="description" content="Experience the future of e-commerce with NEXUS STORE - Advanced 3D shopping, AI recommendations, and next-gen user experience">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader-container">
+            <div class="nexus-loader">
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+                <div class="loader-core">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+            </div>
+            <div class="loading-text">
+                <span>INITIALIZING NEXUS STORE</span>
+                <div class="loading-progress">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D Background Canvas -->
+    <canvas id="three-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span class="brand-text">NEXUS</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="#categories" class="nav-link">Categories</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products..." id="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <a href="account.html">
+                    <button class="nav-btn account-btn" id="account-btn">
+                    <i class="fas fa-user"></i>
+                    <span class="btn-text">Account</span>
+                    </button>
+                </a>
+                <button class="nav-btn cart-btn" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="btn-text">Cart</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text" data-aos="fade-up">
+                <h1 class="hero-title">
+                    <span class="title-line">THE FUTURE OF</span>
+                    <span class="title-main">SHOPPING</span>
+                    <span class="title-sub">IS HERE</span>
+                </h1>
+                <p class="hero-description">
+                    Experience next-generation e-commerce with 3D product visualization, 
+                    AI-powered recommendations, and immersive shopping experiences.
+                </p>
+                <div class="hero-actions">
+                    <a href="shop.html" class="btn btn-primary">
+                        <span>EXPLORE STORE</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <button class="btn btn-secondary" id="hero-demo">
+                        <span>WATCH DEMO</span>
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual" data-aos="fade-left" data-aos-delay="300">
+                <div class="product-showcase" id="hero-showcase">
+                    <div class="showcase-item active">
+                        <img src="https://i.pinimg.com/736x/b6/dc/b2/b6dcb270eae6458889dc4f9b3d35cb56.jpg" alt="Featured Product 1">
+                        <div class="item-info">
+                            <h3>Quantum Headphones</h3>
+                            <p>$299.99</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <img src="https://i.pinimg.com/736x/a5/6c/53/a56c53a723d5f7d2a17d3e20104df65b.jpg" alt="Featured Product 2">
+                        <div class="item-info">
+                            <h3>Neural Smartwatch</h3>
+                            <p>$599.99</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <img src="https://i.pinimg.com/736x/e7/ee/01/e7ee017be7ed5ae10fdef0bf3753524a.jpg" alt="Featured Product 3">
+                        <div class="item-info">
+                            <h3>Holographic Display</h3>
+                            <p>$1299.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-controls">
+                    <button class="control-btn active" data-slide="0"></button>
+                    <button class="control-btn" data-slide="1"></button>
+                    <button class="control-btn" data-slide="2"></button>
+                </div>
+            </div>
+        </div>
+        <div class="hero-stats" data-aos="fade-up" data-aos-delay="600">
+            <div class="stat-item">
+                <div class="stat-number" data-count="500">0</div>
+                <div class="stat-label">Products</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="1000">0</div>
+                <div class="stat-label">Customers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="10">0</div>
+                <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="99">0</div>
+                <div class="stat-label">% Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">EXPLORE CATEGORIES</h2>
+                <p class="section-subtitle">Discover our vast collection across multiple categories</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-background"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3 class="card-title">Electronics</h3>
+                        <p class="card-description">Latest tech gadgets and devices</p>
+                        <div class="card-stats">
+                            <span>15,000+ Products</span>
+                        </div>
+                    </div>
+                    <div class="card-hover-effect"></div>
+                </div>
+                
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card-background"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3 class="card-title">Fashion</h3>
+                        <p class="card-description">Trendy clothing and accessories</p>
+                        <div class="card-stats">
+                            <span>25,000+ Products</span>
+                        </div>
+                    </div>
+                    <div class="card-hover-effect"></div>
+                </div>
+                
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card-background"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3 class="card-title">Home & Living</h3>
+                        <p class="card-description">Furniture and home decor</p>
+                        <div class="card-stats">
+                            <span>8,000+ Products</span>
+                        </div>
+                    </div>
+                    <div class="card-hover-effect"></div>
+                </div>
+                
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="card-background"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3 class="card-title">Sports & Fitness</h3>
+                        <p class="card-description">Equipment for active lifestyle</p>
+                        <div class="card-stats">
+                            <span>5,000+ Products</span>
+                        </div>
+                    </div>
+                    <div class="card-hover-effect"></div>
+                </div>
+                
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="card-background"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="card-title">Books & Media</h3>
+                        <p class="card-description">Knowledge and entertainment</p>
+                        <div class="card-stats">
+                            <span>12,000+ Products</span>
+                        </div>
+                    </div>
+                    <div class="card-hover-effect"></div>
+                </div>
+                
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="card-background"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3 class="card-title">Gaming</h3>
+                        <p class="card-description">Games and gaming accessories</p>
+                        <div class="card-stats">
+                            <span>3,000+ Products</span>
+                        </div>
+                    </div>
+                    <div class="card-hover-effect"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products" id="featured">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">FEATURED PRODUCTS</h2>
+                <p class="section-subtitle">Handpicked items just for you</p>
+            </div>
+            <div class="products-grid" id="featured-products-grid">
+                <!-- Products will be dynamically loaded -->
+            </div>
+            <div class="section-footer" data-aos="fade-up">
+                <a href="shop.html" class="btn btn-outline">
+                    <span>VIEW ALL PRODUCTS</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Product Showcase -->
+    <section class="product-3d-showcase" id="showcase-3d">
+        <div class="container">
+            <div class="showcase-content">
+                <div class="showcase-text" data-aos="fade-right">
+                    <h2 class="showcase-title">EXPERIENCE PRODUCTS IN 3D</h2>
+                    <p class="showcase-description">
+                        Rotate, zoom, and explore products from every angle with our 
+                        revolutionary 3D visualization technology.
+                    </p>
+                    <div class="showcase-features">
+                        <div class="feature-item">
+                            <i class="fas fa-cube"></i>
+                            <span>360° Product View</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                            <span>Zoom & Inspect</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-palette"></i>
+                            <span>Color Variations</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="try-3d-btn">
+                        <span>TRY 3D VIEW</span>
+                        <i class="fas fa-vr-cardboard"></i>
+                    </button>
+                </div>
+                <div class="showcase-3d" data-aos="fade-left">
+                    <div class="product-3d-container" id="product-3d-container">
+                        <!-- 3D product will be rendered here -->
+                    </div>
+                    <div class="showcase-controls-3d">
+                        <button class="control-3d-btn" data-action="rotate">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Rotate</span>
+                        </button>
+                        <button class="control-3d-btn" data-action="zoom">
+                            <i class="fas fa-search-plus"></i>
+                            <span>Zoom</span>
+                        </button>
+                        <button class="control-3d-btn" data-action="color">
+                            <i class="fas fa-palette"></i>
+                            <span>Colors</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <div class="newsletter-content" data-aos="fade-up">
+                <div class="newsletter-text">
+                    <h2 class="newsletter-title">STAY UPDATED</h2>
+                    <p class="newsletter-description">
+                        Get the latest products, exclusive deals, and tech updates delivered to your inbox.
+                    </p>
+                </div>
+                <div class="newsletter-form">
+                    <form id="newsletter-form" class="form-container">
+                        <div class="input-group">
+                            <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                            <button type="submit" class="newsletter-btn">
+                                <span>SUBSCRIBE</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div class="form-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Exclusive Deals</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Early Access</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Tech Updates</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="100">
+                    <div class="footer-brand">
+                        <div class="brand-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <span class="brand-text">NEXUS</span>
+                    </div>
+                    <p class="footer-description">
+                        The future of e-commerce is here. Experience next-generation shopping 
+                        with advanced 3D visualization and AI-powered recommendations.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="footer-title">SHOP</h3>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#featured">Featured</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="footer-title">SUPPORT</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="footer-title">COMPANY</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" data-aos="fade-up" data-aos-delay="500">
+                <div class="footer-bottom-content">
+                    <p class="copyright">© 2024 NEXUS STORE. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" id="cart-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-content" id="cart-content">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cart-footer" style="display: none;">
+            <div class="cart-total">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="total-row">
+                    <span>Shipping:</span>
+                    <span id="cart-shipping">Free</span>
+                </div>
+                <div class="total-row total-final">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <a href="cart.html" class="btn btn-outline">View Cart</a>
+                <a href="checkout.html" class="btn btn-primary">Checkout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

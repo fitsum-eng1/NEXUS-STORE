@@ -1,6 +1,6 @@
 # Nexus Store
 
-![Nexus Store](./assets/logo.png)
+![Nexus Store](https://nexuss-store.netlify.app)
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)

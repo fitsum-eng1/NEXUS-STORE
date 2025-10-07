@@ -244,5 +244,5 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 Fitsum Gashaw — fitsumgashaw22@gmail.com
 
-Project repository: `https://github.com/<your-username>/nexus-store`
+Project repository: `https://github.com/fitsum-eng1/nexus-store`
 
